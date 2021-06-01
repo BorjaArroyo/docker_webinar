@@ -22,6 +22,11 @@ def redirection():
     return 'OK'
 
 
+@app.route('/healthcheck')
+def healthcheck():
+    return ''
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--host', default='0.0.0.0', help='Specify the host of the application')
