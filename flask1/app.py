@@ -10,6 +10,7 @@ app = Flask(__name__)
 @app.route('/dummy')
 def dummy():
     print('Dummy request received on flask1', file=sys.stderr)
+    return 'OK'
 
 
 @app.route('/redirection_and_save')
