@@ -1,6 +1,7 @@
+import json
 import sys
 
-from flask import Flask
+from flask import Flask, request
 import argparse
 import requests
 
@@ -12,16 +13,11 @@ def dummy():
     print('Dummy request received', file=sys.stderr)
 
 
-@app.route('/redirection_and_save')
-def redirection_and_file_save():
-    body = {'example_key': 'example_value'}
-    response = requests.post('http://flask2:80/save', json=body)
-    print('Dummy request received', file=sys.stderr)
-
-
-@app.route('/redirection')
+@app.route('/save', methods=['POST'])
 def redirection():
-    response = requests.get('http://flask2:80/dummy')
+    body = request.json()
+    with open('example.json') as f:
+        json.dump(body, f)
 
 
 if __name__ == '__main__':

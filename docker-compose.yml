@@ -1,0 +1,41 @@
+version: "3.7"
+networks:
+  test-net:
+    external: false
+
+volumes:
+  test-dir:
+    external: false
+
+services:
+  flask1:
+    build: "flask1"
+    image: "flask1"
+    container_name: "flask1"
+    networks:
+      - test-net
+#    ports:
+#      - "5000:80"
+    restart: on-failure
+
+  flask2:
+    build: "flask2"
+    image: "flask2"
+    container_name: "flask2"
+    networks:
+      - test-net
+#    expose:
+#      - "80"
+    restart: on-failure
+
+  flask3:
+    build: "flask3"
+    image: "flask3"
+    container_name: "flask3"
+    networks:
+      - test-net
+    expose:
+      - "80"
+    volumes:
+      - test-dir:/usr/src/app/vol
+    restart: on-failure
