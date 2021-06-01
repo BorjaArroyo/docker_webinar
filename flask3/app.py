@@ -11,6 +11,7 @@ app = Flask(__name__)
 @app.route('/dummy')
 def dummy():
     print('Dummy request received', file=sys.stderr)
+    return 'OK'
 
 
 @app.route('/save', methods=['POST'])
@@ -18,6 +19,7 @@ def redirection():
     body = request.json()
     with open('persistent_folder/example.json') as f:
         json.dump(body, f)
+    return 'OK'
 
 
 if __name__ == '__main__':
