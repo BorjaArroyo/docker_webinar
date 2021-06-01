@@ -37,7 +37,7 @@ services:
     expose:
       - "80"
     volumes:
-      - test-dir:/usr/src/app/vol
+      - test-dir:/usr/src/app/persistent_folder
     healthcheck:
       test: curl 0.0.0.0:80/healthcheck || exit 1
       interval: 60s

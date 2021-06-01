@@ -10,14 +10,14 @@ app = Flask(__name__)
 
 @app.route('/dummy')
 def dummy():
-    print('Dummy request received', file=sys.stderr)
+    print('Dummy request received on flask3', file=sys.stderr)
     return 'OK'
 
 
 @app.route('/save', methods=['POST'])
 def redirection():
-    body = request.json()
-    with open('persistent_folder/example.json') as f:
+    body = request.json
+    with open('persistent_folder/example.json', 'w') as f:
         json.dump(body, f)
     return 'OK'
 
