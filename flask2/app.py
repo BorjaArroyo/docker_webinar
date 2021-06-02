@@ -16,7 +16,7 @@ def dummy():
 
 @app.route('/save', methods=['POST'])
 def redirection():
-    body = request.json()
+    body = request.json
     with open('example.json') as f:
         json.dump(body, f)
     return 'OK'
